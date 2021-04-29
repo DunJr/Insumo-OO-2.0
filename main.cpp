@@ -254,10 +254,9 @@ void MenuPrincipal(vector<Insumo*> &ms){
 }
 
 int main(){
-
     vector<Insumo*> ms;
-    
+
     MenuPrincipal(ms);
-    
+
     return 0;
 }
