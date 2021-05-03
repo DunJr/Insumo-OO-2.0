@@ -23,10 +23,7 @@ class Vacina : public Insumo{
         int intervalo;
 
     public:
-        //vector<Vacina> estoque;
-        //vector<Vacina> entregues;
-
-        Vacina();//int tipoI, string nome, double preco, int quantidade, string vencimento, string fabricante, string local, string tipoVacina, int NumeroDoses, int intervalo
+        Vacina();
 
         int    getTipoI();
         string getNome();
@@ -52,7 +49,7 @@ class Vacina : public Insumo{
 
         void   criaInsumo(Vacina &vac, vector<Insumo*> &ms);
         void   listaInsumosSimples(vector<Insumo*> &ms);
-        void   listaInsumosCompleta();
+        void   listaInsumosCompleta(vector<Insumo*> &ms);
         void   listaInsumosTipo();
 
         void   listaEntregasSimples();
@@ -61,21 +58,6 @@ class Vacina : public Insumo{
         void   listaEntregasPorEstado();
 
         void   enviarInsumo();
-
-
-        /*
-        void setDosagem(double dosagem);
-        void setAdministracao(string administracao);
-        void setDisponibilizacao(string disponibilizacao);
-        double getDosagem();
-        string getAdministracao();
-        string getDisponibilizacao();
-        void   setTipoEpi(string tipoEpi);
-        void   setDescricao(string descricao);
-        string getTipoEpi();
-        string getDescricao();
-        */
-
 };
 
 #endif    

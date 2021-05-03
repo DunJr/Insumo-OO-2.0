@@ -42,13 +42,12 @@ class Epi : public Insumo{
         void   setVencimento(string vencimento);
         void   setFabricante(string fabricante);
         void   setLocal(string local);
-        void   setDosagem(double dosagem);
         void   setTipoEpi(string tipoEpi);
         void   setDescricao(string descricao);
 
         void   criaInsumo(Epi &epi, vector<Insumo*> &ms);
         void   listaInsumosSimples(vector<Insumo*> &ms);
-        void   listaInsumosCompleta();
+        void   listaInsumosCompleta(vector<Insumo*> &ms);
         void   listaInsumosTipo();
 
         void   listaEntregasSimples();
@@ -57,22 +56,6 @@ class Epi : public Insumo{
         void   listaEntregasPorEstado();
 
         void   enviarInsumo();
-
-
-        /*
-        string getTipoVacina();// residuo
-        int    getNumeroDoses();
-        int    getIntervalo();
-        double getDosagem();
-        string getAdministracao();
-        string getDisponibilizacao();
-        void   setTipoVacina(string tipoVacina);
-        void   setNumeroDoses(int numeroDoses);
-        void   setIntervalo(int intervalo);
-        void   setDosagem(double dosagem);
-        void   setAdministracao(string administracao);
-        void   setDisponibilizacao(string disponibilizacao);
-        */
 };
 
 #endif    

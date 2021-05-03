@@ -4,63 +4,8 @@
 #include "Medicamento.h"
 #include "Epi.h"
 #include "Insumo.h"
-
-
-void menuG(){
-  cout << "\t\t<Menu>\n" << endl;
-  cout << "\t1- Cadastrar insumo." << endl;
-  cout << "\t2- Disponibilidade de insumos estoque."    << endl;
-  cout << "\t3- Descrição dos insumos em estoque."      << endl;
-  cout << "\t4- Listar insumos em estoque por tipo."    << endl;
-  cout << "\t5- Lista de insumos distribuidos."         << endl;
-  cout << "\t6- Descrição dos insumos distribuidos."    << endl;
-  cout << "\t7- Listar insumos distribuidos por tipo."  << endl;
-  cout << "\t8- Listar insumos distribuidos por estado."<< endl;
-  cout << "\t9- Enviar Insumo para um Estado."          << endl;
-  cout << "\t0- Sair."                                  << endl;
-  cout << "\nEscolha: ";
-}
-
-void menuTipo(){
-  cout << "\t\t<Tipos de Insumo>\n" << endl;
-  cout << "\t1- Vacina." << endl;
-  cout << "\t2- Medicamento." << endl;
-  cout << "\t3- EPI." << endl;
-  cout << "\t4- Voltar." << endl;
-  cout << "\nEscolha: ";
-}
-
-void menuEstados(){
-  cout << "\t\t<Estados>\n"             << endl;
-  cout << "\t1-  Acre."                 << endl;
-  cout << "\t2-  Alagoas."              << endl;
-  cout << "\t3-  Amapa."                << endl;
-  cout << "\t4-  Amazonas."             << endl;
-  cout << "\t5-  Bahia."                << endl;
-  cout << "\t6-  Ceara."                << endl;
-  cout << "\t7-  Distrito Federal."     << endl;
-  cout << "\t8-  Espirito Santo."       << endl;
-  cout << "\t9-  Goias."                << endl;
-  cout << "\t10- Maranhao."             << endl;
-  cout << "\t11- Mato Grosso."          << endl;
-  cout << "\t12- Mato Grosso do Sul."   << endl;
-  cout << "\t13- Minas Gerais."         << endl;
-  cout << "\t14- Para."                 << endl;
-  cout << "\t15- Paraiba."              << endl;
-  cout << "\t16- Parana."               << endl;
-  cout << "\t17- Pernambuco."           << endl;
-  cout << "\t18- Piaui."                << endl;
-  cout << "\t19- Rio de Janeiro."       << endl;
-  cout << "\t20- Rio Grande do Norte."  << endl;
-  cout << "\t21- Rio Grande do Sul."    << endl;
-  cout << "\t22- Rondonia."             << endl;
-  cout << "\t23- Roraima."              << endl;
-  cout << "\t24- Santa Catarina."       << endl;
-  cout << "\t25- Sao Paulo."            << endl;
-  cout << "\t26- Sergipe."              << endl;
-  cout << "\t27- Tocantins."            << endl;
-  cout << "\nEscolha: ";
-}
+#include "ScanDados.h"
+#include "Menus.h"
 
 int escolha(){
     int num;
@@ -76,7 +21,7 @@ int escolhaTipo(){
     system("clear");
     menuTipo();
     cin >> num;
-     return num;
+    return num;
 }
 
 void enterParaSair(){
@@ -87,144 +32,195 @@ void enterParaSair(){
     getline(cin, aux);
 }
 
-void novaVacina(vector<Insumo*> &ms){
-    system("clear");
-    string str;
-    int numI; double numD;
-    
-    Vacina *vac = new Vacina();
-
-    //vac.criaInsumo(int tipoI, std::string nome, double preco, int quantidade, std::string vencimento, std::string fabricante, std::string local, std::string tipoVacina, int numeroDoses, int intervalo)
-    
-    cout << "\nNome: ";
-    getline(cin, str, '\n');
-    getline(cin, str);
-    vac->setNome(str);
-
-    cout << "\nPreco: ";
-    cin >> numD;
-    vac->setPreco(numD);
-
-    cout << "\nQuantidade: ";
-    cin >> numI;
-    vac->setQuantidade(numI);
-
-    cout << "\nVencimento: ";
-    getline(cin, str, '\n');
-    getline(cin, str);
-    vac->setVencimento(str);
-
-    cout << "\nFabricante: ";
-    getline(cin, str);
-    vac->setFabricante(str);
-
-    cout << "\nTipo da vacina: ";
-    getline(cin, str);
-    vac->setTipoVacina(str);
-
-    cout << "\nNumero de Doses(Tratamento completo): ";
-    cin >> numI;
-    vac->setNumeroDoses(numI);
-
-    cout << "\nIntervalo entre as doses: ";
-    cin >> numI;
-    vac->setIntervalo(numI);
-
-    
-    vac->criaInsumo(*vac, ms);
-}
-
-void novoMedicamento(vector<Insumo*> &ms){
-    system("clear");
-    string str;
-    int numI; double numD;
-    
-    //vac.criaInsumo(int tipoI, std::string nome, double preco, int quantidade, std::string vencimento, std::string fabricante, std::string local, std::string tipoVacina, int numeroDoses, int intervalo)
-    
-    Medicamento *med = new Medicamento();
-
-    cout << "\nNome: ";
-    getline(cin, str, '\n');
-    getline(cin, str);
-    med->setNome(str);
-
-    cout << "\nPreco: ";
-    cin >> numD;
-    med->setPreco(numD);
-
-    cout << "\nQuantidade: ";
-    cin >> numI;
-    med->setQuantidade(numI);
-
-    cout << "\nVencimento: ";
-    getline(cin, str, '\n');
-    getline(cin, str);
-    med->setVencimento(str);
-
-    cout << "\nFabricante: ";
-    getline(cin, str);
-    med->setFabricante(str);
-
-    cout << "\nAdministracao: ";
-    getline(cin, str);
-    med->setAdministracao(str);
-
-    cout << "\nDisponibilizacao: ";
-    getline(cin, str);
-    med->setDisponibilizacao(str);
-
-    cout << "\nDosagem: ";
-    cin >> numD;
-    med->setDosagem(numD);
-
-    med->criaInsumo(*med, ms);
-
+bool estoqueVazio(vector<Insumo*> &ms){
+    if(ms.size() == 0){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 void novoInsumo(vector<Insumo*> &ms){
     int t;
     system("clear");
 
-    t = escolhaTipo();
-    
-    if(t == 1){
-        novaVacina(ms);
-    }else if(t == 2){
-        novoMedicamento(ms);
-    }else{
-        
-    }
+    do{
+        t = escolhaTipo();
+        if(t == 1){
+            novaVacina(ms);
+        }else if(t == 2){
+            novoMedicamento(ms);
+        }else if(t == 3){
+            novoEPI(ms);
+        }else if(t == 4){
+            break;
+        }else{
+            cout << "Opção invalida, Tente novamente..." << endl;
+            usleep(2000);
+        }
+    }while((t < 0) || (t > 4));
 }
 
-void listaSimples(vector<Insumo*> &ms){
+void listaEstoqueSimples(vector<Insumo*> &ms){
     system("clear");
     Vacina vac;
     Medicamento med;
+    Epi epi;
 
     vac.listaInsumosSimples(ms);
     med.listaInsumosSimples(ms);
+    epi.listaInsumosSimples(ms);
 
     enterParaSair();
 }
 
-void MenuPrincipal(vector<Insumo*> &ms){
-    int aux;
+void listaEstoqueCompleto(vector<Insumo*> &ms){
+    system("clear");
+    Vacina vac;
+    Medicamento med;
+    Epi epi;
 
+    vac.listaInsumosCompleta(ms);
+    med.listaInsumosCompleta(ms);
+    epi.listaInsumosCompleta(ms);
+
+    enterParaSair();
+}
+
+void enviaInsumo(vector<Insumo*> &ms, vector<Insumo*> &he){
+    string estado;
+    int aux, aux2, quant, cont = 0;
+
+    Vacina *auxVac = new Vacina();
+    Medicamento *auxMed = new Medicamento();
+    Epi *auxEpi = new Epi();
+
+    if(estoqueVazio(ms)){
+        system("clear");
+        cout << "Estoque vazio." << endl;
+        getline(cin, estado, '\n');
+        getline(cin, estado);
+    }
+
+    do{
+        listaEstoqueSimples(ms);
+        cout << "Codigo do insumo enviado: ";
+        cin >> aux;
+
+        if((aux < 0) || (aux > (ms.size()-1))){
+            cout << "Opção invalida, Tente novamente..." << endl;
+            usleep(2000);
+            continue;
+        }
+
+        if(ms[aux]->getTipoI() ==  1){
+            auxVac = (Vacina*)ms[aux];
+        }else if(ms[aux]->getTipoI() ==  2){
+            auxMed = (Medicamento*)ms[aux];
+        }else if(ms[aux]->getTipoI() ==  3){
+            auxEpi = (Epi*)ms[aux];
+        }
+
+        do{
+            cout << "Numero de unidades enviadas: ";
+            cin >> aux2;
+
+            if(aux2 == ms[aux]->getQuantidade()){
+                estado = selecEstados();
+                ms[aux]->setLocal(estado);
+                he.push_back(ms[aux]);
+                ms.erase(ms.begin()+aux);
+                return;
+            }else if(aux2 < ms[aux]->getQuantidade()){
+                estado = selecEstados();
+
+                if(ms[aux]->getTipoI() ==  1){
+                    auxVac->setLocal(estado);
+                    auxVac->setQuantidade(aux2);
+                    he.push_back(auxVac);
+                }else if(ms[aux]->getTipoI() ==  2){
+                    auxMed->setLocal(estado);
+                    auxMed->setQuantidade(aux2);
+                    he.push_back(auxMed);
+                }else if(ms[aux]->getTipoI() ==  3){
+                    auxEpi->setLocal(estado);
+                    auxEpi->setQuantidade(aux2);
+                    he.push_back(auxEpi);
+                }
+                ms[aux]->setQuantidade(ms[aux]->getQuantidade() - aux2);
+                return;
+                // estado = selecEstados();
+                // ms[aux]->setLocal(estado);
+                // quant = ms[aux]->getQuantidade(); //pega quantidade em estoque na variavel
+                // ms[aux]->setQuantidade(aux2); //Altera a quantidade para ser enviada ao estado
+                // he.push_back(ms[aux]);  //Envia ao estado
+                // quant -= aux2; //quantidade que sobra no ms(em estoque)
+                // ms[aux]->setQuantidade(quant); //Corrige a quantidade no estoque
+                // ms[aux]->setLocal("Estoque");
+                // return;
+            }else{
+                cout << "Opção invalida, Tente novamente..." << endl;
+                usleep(2000);
+            }
+        }while(1);
+    }while(1);
+
+
+
+    estado = selecEstados();
+}
+
+
+void listaEstoqueTipo(vector<Insumo*> &ms){
+    system("clear");
+    Vacina vac;
+    Medicamento med;
+    Epi epi;
+    int t;
+
+        do{
+
+        t = escolhaTipo();
+        system("clear");
+        
+        if(t == 1){
+            vac.listaInsumosSimples(ms);
+            break;
+        }else if(t == 2){
+            med.listaInsumosSimples(ms);
+            break;
+        }else if(t == 3){
+            epi.listaInsumosSimples(ms);
+            break;
+        }else if(t == 4){
+            break;
+        }else{
+            cout << "Opção invalida, Tente novamente..." << endl;
+            usleep(2000);
+        }
+
+    }while((t < 0) || (t > 4));
+
+    enterParaSair();
+}
+
+void MenuPrincipal(vector<Insumo*> &ms, vector<Insumo*> &he){
+    int aux;
     do{
         aux = escolha();
 
     switch(aux){
       case 1:
-        novoInsumo(ms);
+            novoInsumo(ms);
             break;
         case 2:
-        listaSimples(ms);
+            listaEstoqueSimples(ms);
             break;
         case 3:
-
+            listaEstoqueCompleto(ms);
             break;
         case 4:
-
+            listaEstoqueTipo(ms);
             break;
         case 5:
 
@@ -239,6 +235,7 @@ void MenuPrincipal(vector<Insumo*> &ms){
 
             break;
         case 9:
+            enviaInsumo(ms, he);
 
             break;
         case 0:
@@ -253,10 +250,13 @@ void MenuPrincipal(vector<Insumo*> &ms){
     }while(aux != 0);
 }
 
+
 int main(){
+
     vector<Insumo*> ms;
-
-    MenuPrincipal(ms);
-
+    vector<Insumo*> he;
+    
+    MenuPrincipal(ms, he);
+    
     return 0;
 }

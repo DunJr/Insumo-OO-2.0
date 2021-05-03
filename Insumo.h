@@ -10,8 +10,6 @@ using namespace std;
 
 class Insumo{
     public:
-        //vector<Insumo> *insumos;
-        //Insumo();
 
         virtual int    getTipoI() = 0;
         virtual string getNome() = 0;
@@ -20,14 +18,6 @@ class Insumo{
         virtual string getVencimento() = 0;
         virtual string getFabricante() = 0;
         virtual string getLocal() = 0;
-        string getTipoVacina();
-        int    getNumeroDoses();
-        int    getIntervalo();
-        double getDosagem();
-        string getAdministracao();
-        string getDisponibilizacao();
-        string getTipoEpi();
-        string getDescricao();
         
 
         virtual void   setTipoI(int tipoI) = 0;
@@ -37,25 +27,7 @@ class Insumo{
         virtual void   setVencimento(string vencimento) = 0;
         virtual void   setFabricante(string fabricante) = 0;
         virtual void   setLocal(string local) = 0;
-        void   setTipoVacina(string tipoVacina);
-        void   setNumeroDoses(int numeroDoses);
-        void   setIntervalo(int intervalo);
-        void   setDosagem(double dosagem);
-        void   setAdministracao(string administracao);
-        void   setDisponibilizacao(string disponibilizacao);
-        void   setTipoEpi(string tipoEpi);
-        void   setDescricao(string descricao);
         
-
-        // void   criaInsumo();
-        // void   listaInsumosSimples();
-        // void   listaInsumosCompleta();
-        // void   listaInsumosTipo();
-
-        // void   listaEntregasSimples();
-        // void   listaEntregasCompleta();
-        // void   listaEntregasTipo();
-        // void   listaEntregasPorEstado();
 
         void enviarInsumo();
 

@@ -97,7 +97,7 @@ void Epi::listaInsumosSimples(vector<Insumo*> &ms){
     for(int i = 0; i < ms.size(); i++){
         if(ms[i]->getTipoI() == 3){
             cout << "Insumo " << i+1 << ":"                             << endl;
-            cout << "Tipo do insumo: Vacina"                            << endl;
+            cout << "Tipo do insumo: Epi"                               << endl;
             cout << "Nome do insumo: "      << ms[i]->getNome()         << endl;
             cout << "Quantidade do insumo: "<< ms[i]->getQuantidade()   << endl;
             cout << "Codigo de barra: "     << i                        << endl;
@@ -106,29 +106,26 @@ void Epi::listaInsumosSimples(vector<Insumo*> &ms){
     }
 }
 
+void Epi::listaInsumosCompleta(vector<Insumo*> &ms){
 
-
-
-
-
-
-
-
-
-
-
-
-/*
-string Epi::getTipoVacina(){return " ";}
-int Epi::getNumeroDoses(){return 0;}
-int Epi::getIntervalo(){return 0;}
-void Epi::setTipoVacina(string tipoVacina){}
-void Epi::setNumeroDoses(int numeroDoses){}
-void Epi::setIntervalo(int intervalo){}
-void Epi::setDosagem(double dosagem){}
-void Epi::setAdministracao(string administracao){}
-void Epi::setDisponibilizacao(string disponibilizacao){}
-double Epi::getDosagem(){return 0;}
-string Epi::getAdministracao(){return " ";}
-string Epi::getDisponibilizacao(){return " ";}
-*/
+    if(ms.size() == 0){
+        cout << "Sem EPI's no estoque." << endl;
+        return;
+    }
+    for(int i = 0; i < ms.size(); i++){
+        if(ms[i]->getTipoI() == 3){
+            Epi *auxEpi = (Epi*)ms[i];
+            cout << "Insumo " << i+1 << ":"                             << endl;
+            cout << "Tipo do insumo: Epi"                               << endl;
+            cout << "Nome do insumo: "      << auxEpi->getNome()        << endl;
+            cout << "Quantidade do insumo: "<< auxEpi->getQuantidade()  << endl;
+            cout << "Preco: "               << auxEpi->getPreco()       << endl;
+            cout << "Vencimento: "          << auxEpi->getVencimento()  << endl;
+            cout << "Fabricante: "          << auxEpi->getFabricante()  << endl;
+            cout << "Tipo do Epi: "         << auxEpi->getTipoEpi()     << endl;
+            cout << "Descricao: "           << auxEpi->getDescricao()   << endl;
+            cout << "Codigo de barra: "     << i                        << endl;
+            cout << "\n"                                                << endl;
+        }
+    }
+}

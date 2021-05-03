@@ -23,9 +23,6 @@ class Medicamento : public Insumo{
         string disponibilizacao;
 
     public:
-        //vector<Medicamento> estoque;
-        //vector<Medicamento> entregues;
-
         Medicamento();
 
         int    getTipoI();
@@ -52,7 +49,7 @@ class Medicamento : public Insumo{
 
         void   criaInsumo(Medicamento &med, vector<Insumo*> &ms);
         void   listaInsumosSimples(vector<Insumo*> &ms);
-        void   listaInsumosCompleta();
+        void   listaInsumosCompleta(vector<Insumo*> &ms);
         void   listaInsumosTipo();
 
         void   listaEntregasSimples();
@@ -61,20 +58,6 @@ class Medicamento : public Insumo{
         void   listaEntregasPorEstado();
 
         void   enviarInsumo();
-
-
-        /*
-        string getTipoVacina();
-        int    getNumeroDoses();
-        int    getIntervalo();
-        void   setTipoVacina(string tipoVacina);
-        void   setNumeroDoses(int numeroDoses);
-        void   setIntervalo(int intervalo);
-        void   setTipoEpi(string tipoEpi);
-        void   setDescricao(string descricao);
-        string getTipoEpi();
-        string getDescricao();
-        */
 };
 
 #endif    

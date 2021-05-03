@@ -119,27 +119,27 @@ void Medicamento::listaInsumosSimples(vector<Insumo*> &ms){
     }
 }
 
+void Medicamento::listaInsumosCompleta(vector<Insumo*> &ms){
 
-
-
-
-
-
-
-
-
-
-
-
-/*
-string Medicamento::getTipoVacina(){return " ";}
-int Medicamento::getNumeroDoses(){return 0;}
-int Medicamento::getIntervalo(){return 0;}
-void Medicamento::setTipoVacina(string tipoVacina){}
-void Medicamento::setNumeroDoses(int numeroDoses){}
-void Medicamento::setIntervalo(int intervalo){}
-void   Medicamento::setTipoEpi(string tipoEpi){}
-void   Medicamento::setDescricao(string descricao){}
-string Medicamento::getTipoEpi(){return "";}
-string Medicamento::getDescricao(){return "";}
-*/
+    if(ms.size() == 0){
+        cout << "Sem Medicamentos no estoque." << endl;
+        return;
+    }
+    for(int i = 0; i < ms.size(); i++){
+        if(ms[i]->getTipoI() == 2){
+            Medicamento *auxMed = (Medicamento*)ms[i];
+            cout << "Insumo " << i+1 << ":"                                  << endl;
+            cout << "Tipo do insumo: Medicamento"                            << endl;
+            cout << "Nome do insumo: "      << auxMed->getNome()             << endl;
+            cout << "Quantidade do insumo: "<< auxMed->getQuantidade()       << endl;
+            cout << "Preco: "               << auxMed->getPreco()            << endl;
+            cout << "Vencimento: "          << auxMed->getVencimento()       << endl;
+            cout << "Fabricante: "          << auxMed->getFabricante()       << endl;
+            cout << "Dosagem(mg): "         << auxMed->getDosagem()          << endl;
+            cout << "Administracao: "       << auxMed->getAdministracao()    << endl;
+            cout << "Disponibilidade: "     << auxMed->getDisponibilizacao() << endl;
+            cout << "Codigo de barra: "     << i                             << endl;
+            cout << "\n"                                                     << endl;
+        }
+    }
+}
