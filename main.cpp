@@ -70,8 +70,6 @@ void listaEstoqueSimples(vector<Insumo*> &ms){
     vac.listaInsumosSimples(ms);
     med.listaInsumosSimples(ms);
     epi.listaInsumosSimples(ms);
-
-    enterParaSair();
 }
 
 void listaEstoqueCompleto(vector<Insumo*> &ms){
@@ -89,7 +87,7 @@ void listaEstoqueCompleto(vector<Insumo*> &ms){
 
 void enviaInsumo(vector<Insumo*> &ms, vector<Insumo*> &he){
     string estado;
-    int aux, aux2, quant, cont = 0;
+    int aux, aux2, quant, cont;
 
     Vacina *auxVac = new Vacina();
     Medicamento *auxMed = new Medicamento();
@@ -120,7 +118,7 @@ void enviaInsumo(vector<Insumo*> &ms, vector<Insumo*> &he){
         }else if(ms[aux]->getTipoI() ==  3){
             auxEpi = (Epi*)ms[aux];
         }
-
+        cont = ms[aux]->getQuantidade();
         do{
             cout << "Numero de unidades enviadas: ";
             cin >> aux2;
@@ -147,7 +145,7 @@ void enviaInsumo(vector<Insumo*> &ms, vector<Insumo*> &he){
                     auxEpi->setQuantidade(aux2);
                     he.push_back(auxEpi);
                 }
-                ms[aux]->setQuantidade(ms[aux]->getQuantidade() - aux2);
+                ms[aux]->setQuantidade(cont - aux2);
                 return;
                 // estado = selecEstados();
                 // ms[aux]->setLocal(estado);
@@ -215,6 +213,7 @@ void MenuPrincipal(vector<Insumo*> &ms, vector<Insumo*> &he){
             break;
         case 2:
             listaEstoqueSimples(ms);
+            enterParaSair();
             break;
         case 3:
             listaEstoqueCompleto(ms);
