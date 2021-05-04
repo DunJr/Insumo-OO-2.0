@@ -87,7 +87,7 @@ void listaEstoqueCompleto(vector<Insumo*> &ms){
 
 void enviaInsumo(vector<Insumo*> &ms, vector<Insumo*> &he){
     string estado;
-    int aux, aux2, quant, cont;
+    int aux, aux2, cont;
 
     Vacina *auxVac = new Vacina();
     Medicamento *auxMed = new Medicamento();

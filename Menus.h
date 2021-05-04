@@ -67,7 +67,7 @@ string selecEstados(){
         system("clear");
         menuEstados();
         cin >> aux;
-
+        aux--;
         if((aux > 0) || (aux < 28)){
             return estados[aux];
         }else{
