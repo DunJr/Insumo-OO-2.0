@@ -89,15 +89,16 @@ void enviaInsumo(vector<Insumo*> &ms, vector<Insumo*> &he){
     string estado;
     int aux, aux2, cont;
 
-    Vacina *auxVac = new Vacina();
-    Medicamento *auxMed = new Medicamento();
-    Epi *auxEpi = new Epi();
+    Vacina *auxVac;
+    Medicamento *auxMed;
+    Epi *auxEpi;
 
     if(estoqueVazio(ms)){
         system("clear");
         cout << "Estoque vazio." << endl;
         getline(cin, estado, '\n');
         getline(cin, estado);
+        return;
     }
 
     do{
@@ -111,18 +112,11 @@ void enviaInsumo(vector<Insumo*> &ms, vector<Insumo*> &he){
             continue;
         }
 
-        if(ms[aux]->getTipoI() ==  1){
-            auxVac = (Vacina*)ms[aux];
-        }else if(ms[aux]->getTipoI() ==  2){
-            auxMed = (Medicamento*)ms[aux];
-        }else if(ms[aux]->getTipoI() ==  3){
-            auxEpi = (Epi*)ms[aux];
-        }
-        cont = ms[aux]->getQuantidade();
         do{
             cout << "Numero de unidades enviadas: ";
             cin >> aux2;
-
+            cont = ms[aux]->getQuantidade() - aux2;
+            
             if(aux2 == ms[aux]->getQuantidade()){
                 estado = selecEstados();
                 ms[aux]->setLocal(estado);
@@ -133,29 +127,23 @@ void enviaInsumo(vector<Insumo*> &ms, vector<Insumo*> &he){
                 estado = selecEstados();
 
                 if(ms[aux]->getTipoI() ==  1){
+                    auxVac = new Vacina((Vacina*)ms[aux]);
                     auxVac->setLocal(estado);
                     auxVac->setQuantidade(aux2);
                     he.push_back(auxVac);
                 }else if(ms[aux]->getTipoI() ==  2){
+                    auxMed = new Medicamento((Medicamento*)ms[aux]);
                     auxMed->setLocal(estado);
                     auxMed->setQuantidade(aux2);
                     he.push_back(auxMed);
                 }else if(ms[aux]->getTipoI() ==  3){
+                    auxEpi = new Epi((Epi*)ms[aux]);
                     auxEpi->setLocal(estado);
                     auxEpi->setQuantidade(aux2);
                     he.push_back(auxEpi);
                 }
-                ms[aux]->setQuantidade(cont - aux2);
+                ms[aux]->setQuantidade(cont);
                 return;
-                // estado = selecEstados();
-                // ms[aux]->setLocal(estado);
-                // quant = ms[aux]->getQuantidade(); //pega quantidade em estoque na variavel
-                // ms[aux]->setQuantidade(aux2); //Altera a quantidade para ser enviada ao estado
-                // he.push_back(ms[aux]);  //Envia ao estado
-                // quant -= aux2; //quantidade que sobra no ms(em estoque)
-                // ms[aux]->setQuantidade(quant); //Corrige a quantidade no estoque
-                // ms[aux]->setLocal("Estoque");
-                // return;
             }else{
                 cout << "Opção invalida, Tente novamente..." << endl;
                 usleep(2000);
@@ -191,7 +179,7 @@ void listaEstoqueTipo(vector<Insumo*> &ms){
             epi.listaInsumosSimples(ms);
             break;
         }else if(t == 4){
-            break;
+            return;
         }else{
             cout << "Opção invalida, Tente novamente..." << endl;
             usleep(2000);
@@ -203,6 +191,7 @@ void listaEstoqueTipo(vector<Insumo*> &ms){
 }
 
 void MenuPrincipal(vector<Insumo*> &ms, vector<Insumo*> &he){
+    string estado;
     int aux;
     do{
         aux = escolha();
@@ -222,16 +211,19 @@ void MenuPrincipal(vector<Insumo*> &ms, vector<Insumo*> &he){
             listaEstoqueTipo(ms);
             break;
         case 5:
-
+            listaEstoqueSimples(he);
+            enterParaSair();
             break;
         case 6:
-
+            listaEstoqueCompleto(he);
             break;
         case 7:
-
+            listaEstoqueTipo(he);
             break;
         case 8:
-
+            estado = selecEstados();
+            listaEntregasPorEstado(he, estado);
+            enterParaSair();
             break;
         case 9:
             enviaInsumo(ms, he);
@@ -256,6 +248,5 @@ int main(){
     vector<Insumo*> he;
     
     MenuPrincipal(ms, he);
-    
     return 0;
 }

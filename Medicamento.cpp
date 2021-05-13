@@ -96,6 +96,19 @@ Medicamento::Medicamento(){
     disponibilizacao = " ";
 }
 
+Medicamento::Medicamento(Medicamento *med){
+    this->tipoI = med->getTipoI();
+    this->nome = med->getNome();
+    this->preco = med->getPreco();
+    this->quantidade = med->getQuantidade();
+    this->vencimento = med->getVencimento();
+    this->fabricante = med->getFabricante();
+    this->local = med->getLocal();
+    this->dosagem = med->getDosagem();
+    this->administracao = med->getAdministracao();
+    this->disponibilizacao = med->getDisponibilizacao();
+}
+
 void Medicamento::criaInsumo(Medicamento &med, vector<Insumo*> &ms){
     ms.push_back(&med);
 }
@@ -138,8 +151,27 @@ void Medicamento::listaInsumosCompleta(vector<Insumo*> &ms){
             cout << "Dosagem(mg): "         << auxMed->getDosagem()          << endl;
             cout << "Administracao: "       << auxMed->getAdministracao()    << endl;
             cout << "Disponibilidade: "     << auxMed->getDisponibilizacao() << endl;
+            cout << "Local: "               << auxMed->getLocal()            << endl;
             cout << "Codigo de barra: "     << i                             << endl;
             cout << "\n"                                                     << endl;
+        }
+    }
+}
+
+void Medicamento::listaEntregasPorEstado(vector<Insumo*> &he, string estado){
+
+    if(he.size() == 0){
+        cout << "Nenhuma remessa de Medicamentos's entregue." << endl;
+        return;
+    }
+    for(int i = 0; i < he.size(); i++){
+        if(he[i]->getLocal() == estado){
+            cout << "Insumo " << i+1 << ":"                                 << endl;
+            cout << "Tipo do insumo: Epi"                                   << endl;
+            cout << "Nome do insumo: "          << he[i]->getNome()         << endl;
+            cout << "Quantidade do insumo: "    << he[i]->getQuantidade()   << endl;
+            cout << "Estado destinatario: "     << he[i]->getLocal()        << endl;
+            cout << "\n"                                                    << endl;
         }
     }
 }

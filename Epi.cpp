@@ -84,6 +84,18 @@ Epi::Epi(){
     descricao = " ";
 }
 
+Epi::Epi(Epi *epi){
+    this->tipoI = epi->getTipoI();
+    this->nome = epi->getNome();
+    this->preco = epi->getPreco();
+    this->quantidade = epi->getQuantidade();
+    this->vencimento = epi->getVencimento();
+    this->fabricante = epi->getFabricante();
+    this->local = epi->getLocal();
+    this->tipoEpi = epi->getTipoEpi();
+    this->descricao = epi->getDescricao();
+}
+
 void Epi::criaInsumo(Epi &epi, vector<Insumo*> &ms){
     ms.push_back(&epi);
 }
@@ -124,8 +136,28 @@ void Epi::listaInsumosCompleta(vector<Insumo*> &ms){
             cout << "Fabricante: "          << auxEpi->getFabricante()  << endl;
             cout << "Tipo do Epi: "         << auxEpi->getTipoEpi()     << endl;
             cout << "Descricao: "           << auxEpi->getDescricao()   << endl;
+            cout << "Local: "               << auxEpi->getLocal()       << endl;
             cout << "Codigo de barra: "     << i                        << endl;
             cout << "\n"                                                << endl;
         }
     }
+}
+
+void Epi::listaEntregasPorEstado(vector<Insumo*> &he, string estado){
+
+    if(he.size() == 0){
+        cout << "Nenhuma remessa de EPI's entregue." << endl;
+        return;
+    }
+    for(int i = 0; i < he.size(); i++){
+        if(he[i]->getLocal() == estado){
+            cout << "Insumo " << i+1 << ":"                                 << endl;
+            cout << "Tipo do insumo: Epi"                                   << endl;
+            cout << "Nome do insumo: "          << he[i]->getNome()         << endl;
+            cout << "Quantidade do insumo: "    << he[i]->getQuantidade()   << endl;
+            cout << "Estado destinatario: "     << he[i]->getLocal()        << endl;
+            cout << "\n"                                                    << endl;
+        }
+    }
+
 }

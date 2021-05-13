@@ -24,6 +24,7 @@ class Medicamento : public Insumo{
 
     public:
         Medicamento();
+        Medicamento(Medicamento *med);
 
         int    getTipoI();
         string getNome();
@@ -55,7 +56,7 @@ class Medicamento : public Insumo{
         void   listaEntregasSimples();
         void   listaEntregasCompleta();
         void   listaEntregasTipo();
-        void   listaEntregasPorEstado();
+        void   listaEntregasPorEstado(vector<Insumo*> &he, string estado);
 
         void   enviarInsumo();
 };

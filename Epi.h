@@ -24,6 +24,7 @@ class Epi : public Insumo{
     public:
 
         Epi();
+        Epi(Epi *epi);
 
         int    getTipoI();
         string getNome();
@@ -53,7 +54,7 @@ class Epi : public Insumo{
         void   listaEntregasSimples();
         void   listaEntregasCompleta();
         void   listaEntregasTipo();
-        void   listaEntregasPorEstado();
+        void   listaEntregasPorEstado(vector<Insumo*> &he, string estado);
 
         void   enviarInsumo();
 };

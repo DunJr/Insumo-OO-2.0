@@ -24,6 +24,7 @@ class Vacina : public Insumo{
 
     public:
         Vacina();
+        Vacina(Vacina *vac);
 
         int    getTipoI();
         string getNome();

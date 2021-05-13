@@ -97,6 +97,19 @@ Vacina::Vacina(){
     intervalo = 0;
 }
 
+Vacina::Vacina(Vacina *vac){
+    this->tipoI = vac->getTipoI();
+    this->nome = vac->getNome();
+    this->preco = vac->getPreco();
+    this->quantidade = vac->getQuantidade();
+    this->vencimento = vac->getVencimento();
+    this->fabricante = vac->getFabricante();
+    this->local = vac->getLocal();
+    this->tipoVacina = vac->getTipoVacina();
+    this->numeroDoses = vac->getNumeroDoses();
+    this->intervalo = vac->getIntervalo();
+}
+
 void Vacina::criaInsumo(Vacina &vac, vector<Insumo*> &ms){
     ms.push_back(&vac);
 }
@@ -137,6 +150,7 @@ void Vacina::listaInsumosCompleta(vector<Insumo*> &ms){
             cout << "Tipo da Vacina: "      << auxVac->getTipoVacina()  << endl;
             cout << "Numero de doses: "     << auxVac->getNumeroDoses() << endl;
             cout << "Intervalo das doses: " << auxVac->getIntervalo()   << endl;
+            cout << "Local: "               << auxVac->getLocal()       << endl;
             cout << "Codigo de barra: "     << i                        << endl;
             cout << "\n"                                                << endl;
         }
