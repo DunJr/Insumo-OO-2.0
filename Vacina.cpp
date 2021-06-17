@@ -156,3 +156,21 @@ void Vacina::listaInsumosCompleta(vector<Insumo*> &ms){
         }
     }
 }
+
+void Vacina::listaEntregasPorEstado(vector<Insumo*> &he, string estado){
+
+    if(he.size() == 0){
+        cout << "Nenhuma remessa de Vacinas entregue." << endl;
+        return;
+    }
+    for(int i = 0; i < he.size(); i++){
+        if(he[i]->getLocal() == estado){
+            cout << "Insumo " << i+1 << ":"                                 << endl;
+            cout << "Tipo do insumo: Vacina"                                << endl;
+            cout << "Nome do insumo: "          << he[i]->getNome()         << endl;
+            cout << "Quantidade do insumo: "    << he[i]->getQuantidade()   << endl;
+            cout << "Estado destinatario: "     << he[i]->getLocal()        << endl;
+            cout << "\n"                                                    << endl;
+        }
+    }
+}

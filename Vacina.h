@@ -11,13 +11,13 @@ using namespace std;
 
 class Vacina : public Insumo{
     private:
-        int tipoI;
-        string nome;
-        double preco;
-        int quantidade;
-        string vencimento;
-        string fabricante;
-        string local;
+        // int tipoI;
+        // string nome;
+        // double preco;
+        // int quantidade;
+        // string vencimento;
+        // string fabricante;
+        // string local;
         string tipoVacina;
         int numeroDoses;
         int intervalo;
@@ -56,7 +56,7 @@ class Vacina : public Insumo{
         void   listaEntregasSimples();
         void   listaEntregasCompleta();
         void   listaEntregasTipo();
-        void   listaEntregasPorEstado();
+        void   listaEntregasPorEstado(vector<Insumo*> &he, string estado);
 
         void   enviarInsumo();
 };

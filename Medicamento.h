@@ -11,13 +11,13 @@ using namespace std;
 
 class Medicamento : public Insumo{
     private:
-        int tipoI;
-        string nome;
-        double preco;
-        int quantidade;
-        string vencimento;
-        string fabricante;
-        string local;
+        // int tipoI;
+        // string nome;
+        // double preco;
+        // int quantidade;
+        // string vencimento;
+        // string fabricante;
+        // string local;
         double dosagem;
         string administracao;
         string disponibilizacao;

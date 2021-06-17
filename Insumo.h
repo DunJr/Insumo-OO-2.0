@@ -9,6 +9,15 @@
 using namespace std;
 
 class Insumo{
+    protected:
+        int tipoI;
+        string nome;
+        double preco;
+        int quantidade;
+        string vencimento;
+        string fabricante;
+        string local;
+
     public:
 
         virtual int    getTipoI() = 0;

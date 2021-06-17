@@ -190,6 +190,34 @@ void listaEstoqueTipo(vector<Insumo*> &ms){
     enterParaSair();
 }
 
+void listaEntregasPorEstadoMain(vector<Insumo*> &he, string estado){
+
+    if(he.size() == 0){
+        cout << "Nenhuma remessa de EPI's entregue." << endl;
+        return;
+    }
+    system("clear");
+    for(int i = 0; i < he.size(); i++){
+        if(he[i]->getLocal() == estado){
+            cout << "Insumo " << i+1 << ":"                                     << endl;
+
+            if(he[i]->getTipoI() == 1){
+                cout << "Tipo do insumo: Vacina"                                << endl;
+            }else if(he[i]->getTipoI() == 2){
+                cout << "Tipo do insumo: Medicamento"                           << endl;
+            }else if(he[i]->getTipoI() == 3){
+                cout << "Tipo do insumo: Epi"                                   << endl;
+            }
+
+            cout << "Nome do insumo: "          << he[i]->getNome()         << endl;
+            cout << "Quantidade do insumo: "    << he[i]->getQuantidade()   << endl;
+            cout << "Estado destinatario: "     << he[i]->getLocal()        << endl;
+            cout << "\n"                                                    << endl;
+        }
+    }
+
+}
+
 void MenuPrincipal(vector<Insumo*> &ms, vector<Insumo*> &he){
     string estado;
     int aux;
@@ -222,7 +250,7 @@ void MenuPrincipal(vector<Insumo*> &ms, vector<Insumo*> &he){
             break;
         case 8:
             estado = selecEstados();
-            listaEntregasPorEstado(he, estado);
+            listaEntregasPorEstadoMain(he, estado);
             enterParaSair();
             break;
         case 9:
@@ -241,8 +269,9 @@ void MenuPrincipal(vector<Insumo*> &ms, vector<Insumo*> &he){
     }while(aux != 0);
 }
 
-
 int main(){
+
+    Insumo *a = new Vacina();
 
     vector<Insumo*> ms;
     vector<Insumo*> he;
